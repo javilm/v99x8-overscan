@@ -61,8 +61,8 @@ start:		di
 		RAM2VRAM16	screen,TAB_NAME,1024
 
 		; Clear VDP status registers
-;		RDVDP	0
-;		RDVDP	1
+		RDVDP	0
+		RDVDP	1
 
 		ei
 
@@ -117,17 +117,25 @@ setvramaddr_w:	ld	a,d
 ; Interrupt handler for line 200
 hblank200:	RDVDP	1
 
+		; Check whether this is a line interrupt
+		and	000000001b
+		jr	z,hblank200.2
+
 		SET192LINES
 		SETHBLANK	224
 
 		ld	hl,hblank224
 		ld	(00038h+1),hl
 
-		ei
+hblank200.2:	ei
 		ret
 
 ; Interrupt handler for line 224
 hblank224:	RDVDP	1
+
+		; Check whether this is a line interrupt
+		and	000000001b
+		jr	z,hblank224.2
 
 		SET212LINES
 		SETHBLANK	200
@@ -141,6 +149,5 @@ hblank224:	RDVDP	1
 		ld	(RG8SAV+23),a
 		VDP	23
 
-		; Re-enable interrupts and return to the main loop
-		ei
+hblank224.2:	ei
 		ret
