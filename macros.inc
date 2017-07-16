@@ -114,9 +114,9 @@ SET212LINES	macro
 ; Notes:	Interrupts must be disabled
 
 SPRITESOFF	macro
-		ld	a,(RG0SAV+0)
+		ld	a,(RG0SAV+8)
 		or	000000010b
-		ld	(RG0SAV+0),a
+		ld	(RG0SAV+8),a
 		VDP	8
 		endm
 
