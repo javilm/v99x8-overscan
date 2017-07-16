@@ -1,8 +1,6 @@
 as over.as
+as tiles.as
+as screen.as
 ld over=over,tiles,screen
-del over.rel
-del over.sym
-lin.sym
-rel
-type 192lin.sym
-
+del *.rel
+del *.sym

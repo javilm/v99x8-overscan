@@ -144,29 +144,3 @@ hblank224:	RDVDP	1
 		; Re-enable interrupts and return to the main loop
 		ei
 		ret
-t
-enable interrupts and return to the main loop
-hblank224.2:	ei
-		ret
-DP's vertical scroll register
-		ld	a,(RG8SAV+23)
-		inc	a
-		ld	(RG8SAV+23),a
-		VDP	23
-
-		; Re-enable interrupts and return to the main loop
-hblank224.2:	ei
-		ret
-a
-		VDP	23
-
-		; Re-enable interrupts and return to the main loop
-hblank224.2:	ei
-		ret
-
-; ###############
-; ## VARIABLES ##
-; ###############
-
-oldint:		defw	0	; Pointer to the original interrupt handler
-
