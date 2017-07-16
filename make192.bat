@@ -1,6 +1,6 @@
-as 192lin.as
-as tiles.as
-as screen.as
+as 192lin.asm
+as tiles.asm
+as screen.asm
 ld 192lin=192lin,tiles,screen
-del *.rel
-del *.sym
+del 192lin.rel
+del 192lin.sym

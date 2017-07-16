@@ -1,6 +1,6 @@
-as over.as
-as tiles.as
-as screen.as
+as over.asm
+as tiles.asm
+as screen.asm
 ld over=over,tiles,screen
-del *.rel
-del *.sym
+del over.rel
+del over.sym
