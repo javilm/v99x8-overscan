@@ -121,11 +121,11 @@ hblank200:	RDVDP	1
 		and	000000001b
 		jr	z,hblank200.2
 
-		SET192LINES
-		SETHBLANK	224
-
 		ld	hl,hblank224
 		ld	(00038h+1),hl
+
+		SET192LINES
+		SETHBLANK	224
 
 hblank200.2:	ei
 		ret
@@ -137,9 +137,6 @@ hblank224:	RDVDP	1
 		and	000000001b
 		jr	z,hblank224.2
 
-		SET212LINES
-		SETHBLANK	200
-
 		ld	hl,hblank200
 		ld	(00038h+1),hl
 
@@ -148,6 +145,9 @@ hblank224:	RDVDP	1
 		inc	a
 		ld	(RG8SAV+23),a
 		VDP	23
+
+		SET212LINES
+		SETHBLANK	200
 
 hblank224.2:	ei
 		ret
